@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./src/app:/code
+
+  web:
+    image: nginx:1.19.0-alpine
+    ports:
+      - "8000:8000"
+    depends_on:
+      - php
+    volumes:
+      - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
+      - ./src/web:/var/www/html
+
+  php:
+    image: php:7.1.9-fpm-alpine
+    volumes:
+      - ./src/web:/var/www/html
+
