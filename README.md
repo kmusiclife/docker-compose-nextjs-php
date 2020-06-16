@@ -11,7 +11,7 @@ To get started, just clone the this repository and run `npm install && npm run d
 If you require to setup new Next.js Project run below commands:
 
     cd src/app
-    git clone https://github.com/kmusiclife/nextjs-starter-bootstrap.git
+    git clone https://github.com/kmusiclife/nextjs-starter-bootstrap.git ./
     npm install
     cd ../../ # move to current docker path
     docker-compose up
